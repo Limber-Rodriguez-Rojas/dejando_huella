@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Centro Infantil Dejando Huella</title>
+    <!-- Fuentes amigables y redondeadas -->
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;800;900&family=Fredoka:wght@500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* === PALETA DE COLORES EXTRAÍDA DE LA IMAGEN === */
+        :root {
+            --azul-marino: #1A2841; /* Azul oscuro de la palabra "Dejando" y la mano */
+            --verde-azulado: #5E9D93; /* Teal del uniforme y la palabra "Huella" */
+            --mostaza: #DF943F; /* Naranja/Mostaza de las mangas y letras */
+            --rojo-suave: #D56C5F; /* Rojo de la letra 'e' */
+            --beige-fondo: #F5EFE9; /* Color crema del fondo y uniformes */
+            --blanco: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Nunito', sans-serif;
+        }
+
+        body {
+            background-color: var(--beige-fondo);
+            color: var(--azul-marino);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* === NAVEGACIÓN === */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            background-color: var(--blanco);
+            box-shadow: 0 4px 15px rgba(26, 40, 65, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 3px solid var(--verde-azulado);
+        }
+
+        /* Estilos para el logo */
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-img {
+            height: 60px; /* Ajusta este tamaño según tu imagen recortada */
+            display: block; /* Cambia a "none" si prefieres usar el logo de texto abajo */
+        }
+
+        /* Logo en texto (Fallback por si la imagen falla) */
+        .logo-texto {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 28px;
+            font-weight: 600;
+            display: none; /* Cambia a "block" si no tienes la imagen de logo lista */
+        }
+        .logo-texto span:nth-child(1) { color: var(--azul-marino); }
+        .logo-texto span:nth-child(2) { color: var(--verde-azulado); }
+        .logo-texto span:nth-child(3) { color: var(--mostaza); }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            font-weight: 800;
+            color: var(--azul-marino);
+            transition: color 0.3s;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+
+        .nav-links a:hover {
+            color: var(--mostaza);
+        }
+
+        /* === SECCIÓN INICIO (HERO) === */
+        .hero {
+            text-align: center;
+            padding: 80px 20px;
+            background-color: var(--beige-fondo);
+            background-image: radial-gradient(circle at 10% 20%, rgba(94, 157, 147, 0.1) 0%, transparent 20%),
+                              radial-gradient(circle at 90% 80%, rgba(223, 148, 63, 0.1) 0%, transparent 20%);
+        }
+
+        .hero h1 {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 3.5rem;
+            color: var(--azul-marino);
+            margin-bottom: 20px;
+        }
+
+        .hero h1 span {
+            color: var(--verde-azulado);
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            max-width: 650px;
+            margin: 0 auto 35px auto;
+            color: #4A5568;
+        }
+
+        .btn {
+            background-color: var(--mostaza);
+            color: var(--blanco);
+            padding: 14px 35px;
+            border-radius: 30px;
+            font-weight: 800;
+            font-size: 1.1rem;
+            transition: transform 0.2s, background 0.3s;
+            display: inline-block;
+            box-shadow: 0 4px 10px rgba(223, 148, 63, 0.3);
+        }
+
+        .btn:hover {
+            background-color: #c78335;
+            transform: translateY(-2px);
+        }
+
+        /* === SECCIONES COMUNES === */
+        section {
+            padding: 80px 5%;
+        }
+
+        .titulo-seccion {
+            font-family: 'Fredoka', sans-serif;
+            text-align: center;
+            font-size: 2.8rem;
+            color: var(--azul-marino);
+            margin-bottom: 50px;
+        }
+
+        /* === NOSOTROS / DETALLES === */
+        .seccion-blanca {
+            background-color: var(--blanco);
+            border-radius: 30px 30px 0 0;
+            box-shadow: 0 -10px 30px rgba(0,0,0,0.02);
+        }
+
+        .detalles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .tarjeta {
+            background: var(--beige-fondo);
+            padding: 40px 30px;
+            border-radius: 20px;
+            text-align: center;
+            transition: transform 0.3s;
+            border-bottom: 5px solid var(--verde-azulado);
+        }
+        
+        .tarjeta:nth-child(2) { border-bottom-color: var(--mostaza); }
+        .tarjeta:nth-child(3) { border-bottom-color: var(--rojo-suave); }
+
+        .tarjeta:hover {
+            transform: translateY(-5px);
+        }
+
+        .tarjeta-icono {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        .tarjeta h3 {
+            color: var(--azul-marino);
+            font-family: 'Fredoka', sans-serif;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        /* === GALERÍA === */
+        .galeria-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .galeria-img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            border-radius: 20px;
+            border: 4px solid var(--blanco);
+            box-shadow: 0 5px 15px rgba(26, 40, 65, 0.08);
+            transition: transform 0.3s;
+        }
+
+        .galeria-img:hover {
+            transform: scale(1.03) rotate(-1deg);
+        }
+
+        /* === CONTACTO Y UBICACIÓN === */
+        .contacto-contenedor {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            background: var(--blanco);
+            padding: 50px;
+            border-radius: 25px;
+            box-shadow: 0 10px 30px rgba(26, 40, 65, 0.05);
+            border-top: 6px solid var(--verde-azulado);
+        }
+
+        .info-contacto, .mapa-contenedor {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .info-contacto h3 {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            color: var(--azul-marino);
+        }
+
+        .info-item {
+            margin-bottom: 20px;
+        }
+
+        .info-item strong {
+            color: var(--verde-azulado);
+            display: block;
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+
+        .mapa-contenedor iframe {
+            width: 100%;
+            height: 100%;
+            min-height: 300px;
+            border: none;
+            border-radius: 15px;
+        }
+
+        /* === FOOTER === */
+        footer {
+            background-color: var(--azul-marino);
+            color: var(--beige-fondo);
+            text-align: center;
+            padding: 30px;
+            font-size: 0.9rem;
+        }
+
+        /* === RESPONSIVE === */
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hero h1 { font-size: 2.5rem; }
+            .contacto-contenedor { padding: 30px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Menú de Navegación -->
+    <nav>
+        <div class="logo-container">
+            <!-- OPCIÓN 1: Imagen del logo (Recomendado). Guarda tu logo como logo.png -->
+            <img src="logo.png" alt="Logo Dejando Huella" class="logo-img" onerror="this.style.display='none'; document.getElementById('logo-texto').style.display='block';">
+            
+            <!-- OPCIÓN 2: Logo en texto (Se muestra si la imagen falla) -->
+            <div id="logo-texto" class="logo-texto">
+                <span>Dejando</span><span>Huella</span>
+            </div>
+        </div>
+        <div class="nav-links">
+            <a href="#inicio">Inicio</a>
+            <a href="#nosotros">Nosotros</a>
+            <a href="#galeria">Galería</a>
+            <a href="#contacto">Contacto</a>
+        </div>
+    </nav>
+
+    <!-- Sección Inicio -->
+    <section id="inicio" class="hero">
+        <h1>Donde cada pequeño <span>paso cuenta</span></h1>
+        <p>Un espacio seguro, lleno de amor y aprendizaje para el desarrollo integral de tus hijos. Somos una extensión de tu hogar con la mejor atención y comodidad.</p>
+        <a href="#contacto" class="btn">Solicitar Información</a>
+    </section>
+
+    <!-- Sección Detalles / Nosotros -->
+    <section id="nosotros" class="seccion-blanca">
+        <h2 class="titulo-seccion">Lo que nos hace especiales</h2>
+        <div class="detalles-grid">
+            <div class="tarjeta">
+                <div class="tarjeta-icono">👕</div>
+                <h3>Comodidad Diaria</h3>
+                <p>Nuestros uniformes de tela deportiva transpirable aseguran secado rápido y resistencia para que jueguen con total libertad.</p>
+            </div>
+            <div class="tarjeta">
+                <div class="tarjeta-icono">🎨</div>
+                <h3>Metodología</h3>
+                <p>Aprendizaje a través del juego, estimulación temprana y desarrollo de habilidades socioemocionales en un entorno seguro.</p>
+            </div>
+            <div class="tarjeta">
+                <div class="tarjeta-icono">⏰</div>
+                <h3>Horarios Flexibles</h3>
+                <p>Jornada continua adaptada a las necesidades de los padres, con un equipo de profesionales siempre atentos a tus pequeños.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Galería -->
+    <section id="galeria">
+        <h2 class="titulo-seccion">Nuestras Instalaciones</h2>
+        <div class="galeria-grid">
+            <!-- Estas imágenes tienen un fondo con los colores de tu marca como placeholder -->
+            <img src="https://via.placeholder.com/500x400/5E9D93/FFFFFF?text=Juegos+y+Diversion" alt="Área de juegos" class="galeria-img">
+            <img src="https://via.placeholder.com/500x400/DF943F/FFFFFF?text=Nuestros+Uniformes" alt="Uniformes" class="galeria-img">
+            <img src="https://via.placeholder.com/500x400/D56C5F/FFFFFF?text=Aulas+Creativas" alt="Aulas" class="galeria-img">
+        </div>
+    </section>
+
+    <!-- Sección Contacto -->
+    <section id="contacto" class="seccion-blanca">
+        <h2 class="titulo-seccion">¡Ven a conocernos!</h2>
+        <div class="contacto-contenedor">
+            <div class="info-contacto">
+                <h3>Información de Contacto</h3>
+                
+                <div class="info-item">
+                    <strong>📍 Dirección:</strong>
+                    <p>50 metros este y 75 sur de la Universidad de San José, Barrio San Martín, Ciudad Quesada, San Carlos</p>
+                </div>
+                
+                <div class="info-item">
+                    <strong>📞 Teléfono / WhatsApp:</strong>
+                    <p>+506 8000-0000</p>
+                </div>
+                
+                <div class="info-item">
+                    <strong>✉️ Correo Electrónico:</strong>
+                    <p>info@dejandohuella.com</p>
+                </div>
+
+                <a href="https://wa.me/50680000000" target="_blank" class="btn" style="background-color: var(--verde-azulado); margin-top: 10px;">Escríbenos por WhatsApp</a>
+            </div>
+            
+            <div class="mapa-contenedor">
+                <!-- Mapa de Google Maps actualizado a la dirección de Ciudad Quesada -->
+                <iframe src="https://maps.google.com/maps?q=8HCF%2B4M6,%20Ciudad%20Quesada,%20Provincia%20de%20Alajuela,%20Costa%20Rica&t=&z=15&ie=UTF8&iwloc=&output=embed" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Centro Infantil Dejando Huella. Todos los derechos reservados.</p>
+    </footer>
+
+</body>
+</html>
